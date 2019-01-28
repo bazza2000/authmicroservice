@@ -23,7 +23,7 @@ pipeline {
 
       }
       steps {
-        sh 'mvn test'
+        sh 'mvn -DforkCount=0 test'
       }
     }
   }
