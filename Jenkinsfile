@@ -47,6 +47,8 @@ pipeline {
       }
       steps {
         sh '''PATH=$PATH:/root/bin
+/root/bin/kubectl delete -f /root/demo-service.yaml
+cat /root/demo-service.yaml.1 | sed \\"s/JOB_NUMBER/${env.BUILD_ID}/g\\" > /root/demo-service.yaml
 /root/bin/kubectl apply -f /root/demo-service.yaml'''
       }
     }
