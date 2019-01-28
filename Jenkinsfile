@@ -29,7 +29,7 @@ pipeline {
     stage('Containerize') {
       steps {
         sh '''cp -rp /mnt/target .
-cp /root/liveness.sh .
+cp /mnt/liveness.sh .
 /usr/bin/docker build -t  ec2-63-34-137-130.eu-west-1.compute.amazonaws.com:8083/gs-rest-service:21 .'''
       }
     }
