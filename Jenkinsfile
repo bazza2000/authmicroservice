@@ -51,6 +51,7 @@ cp /root/liveness.sh .
 #/root/bin/kubectl delete -f /root/demo-service.yaml
 #cat /root/demo-service.yaml.1 | sed \\"s/JOB_NUMBER/20/g\\" > /root/demo-service.yaml
 /root/bin/kubectl apply -f /root/demo-service.yaml'''
+        echo 'Deploy Complete'
       }
     }
   }
