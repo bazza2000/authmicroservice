@@ -38,5 +38,11 @@ pipeline {
 /usr/bin/docker push ec2-63-34-137-130.eu-west-1.compute.amazonaws.com:8083/gs-rest-service'''
       }
     }
+    stage('Kubernetes Deploy') {
+      steps {
+        sh '''PATH=$PATH:/root/bin
+/root/bin/kubectl apply -f /root/demo-service.yaml'''
+      }
+    }
   }
 }
