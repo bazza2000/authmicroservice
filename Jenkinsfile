@@ -25,28 +25,6 @@ pipeline {
       steps {
         sh 'mvn -DforkCount=0 test'
       }
-      post {
-                always {
-                    junit 'target/surefire-reports/*.xml'
-                }
-            }
-      stage('Containerize') {
-            steps {
-                sh "cp -rp /mnt/target . ; /usr/bin/docker build -t  ec2-63-34-137-130.eu-west-1.compute.amazonaws.com:8083/gs-rest-service:${env.BUILD_ID} ."
-            }
-        }
-        stage('Push Image') {
-            steps {
-                sh '/usr/bin/docker login -u admin -p admin123 ec2-63-34-137-130.eu-west-1.compute.amazonaws.com:8083'
-                sh '/usr/bin/docker push ec2-63-34-137-130.eu-west-1.compute.amazonaws.com:8083/gs-rest-service'
-            }
-        }
-        stage('Kubernetes Deploy') {
-          agent { label 'jenkins_host' }
-          steps {
-              sh "PATH=$PATH:/root/bin ; /root/bin/kubectl delete -f /root/demo-service.yaml ; cat /root/demo-service.yaml.1 | sed \"s/JOB_NUMBER/${env.BUILD_ID}/g\" > /root/demo-service.yaml ; /root/bin/kubectl apply -f /root/demo-service.yaml"
-          }
-        }
     }
   }
 }
