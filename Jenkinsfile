@@ -32,5 +32,11 @@ pipeline {
 /usr/bin/docker build -t  ec2-63-34-137-130.eu-west-1.compute.amazonaws.com:8083/gs-rest-service:20 .'''
       }
     }
+    stage('Push Image') {
+      steps {
+        sh '''/usr/bin/docker login -u admin -p admin123 ec2-63-34-137-130.eu-west-1.compute.amazonaws.com:8083
+/usr/bin/docker push ec2-63-34-137-130.eu-west-1.compute.amazonaws.com:8083/gs-rest-service'''
+      }
+    }
   }
 }
