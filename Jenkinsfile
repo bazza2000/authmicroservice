@@ -39,6 +39,12 @@ pipeline {
       }
     }
     stage('Kubernetes Deploy') {
+      agent {
+        node {
+          label 'jenkins_host'
+        }
+
+      }
       steps {
         sh '''PATH=$PATH:/root/bin
 /root/bin/kubectl apply -f /root/demo-service.yaml'''
