@@ -28,7 +28,9 @@ pipeline {
     }
     stage('Containerize') {
       steps {
-        sh 'ls -al  /mnt/target '
+        sh '''ls -al  /mnt/target 
+pwd
+date'''
       }
     }
   }
