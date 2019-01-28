@@ -28,7 +28,7 @@ pipeline {
     }
     stage('Containerize') {
       steps {
-        sh '''cp -rp /mnt/target .
+        sh '''cp -rp /mnt/target/gs* .
 /usr/bin/docker build -t  ec2-63-34-137-130.eu-west-1.compute.amazonaws.com:8083/gs-rest-service:${env.BUILD_ID} .'''
       }
     }
