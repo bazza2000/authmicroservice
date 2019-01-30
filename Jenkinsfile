@@ -38,8 +38,10 @@ pipeline {
     }
     stage('Push Image') {
       steps {
-        sh '''/usr/bin/docker login -u admin -p admin123 ec2-63-34-137-130.eu-west-1.compute.amazonaws.com:8083
-/usr/bin/docker push ec2-63-34-137-130.eu-west-1.compute.amazonaws.com:8083/gs-rest-service'''
+        sh " \
+                 /usr/bin/docker login -u admin -p admin123 ${env.SERVICE_URL}:${env.SERVICE_PORT} ;\
+                 /usr/bin/docker push ${env.SERVICE_URL}:${env.SERVICE_PORT}/${env.APP_NAME}:${env.BUILD_ID} \
+           "
       }
     }
     stage('Kubernetes Deploy') {
