@@ -34,6 +34,6 @@ spec:
         image: SERVICE_URL:SERVICE_PORT/APP_NAME:JOB_NUMBER
         ports:
         - name: http-server
-          containerPort: 8091
+          containerPort: CONT_PORT
       imagePullSecrets:
         - name: regcred
