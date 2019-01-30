@@ -29,9 +29,11 @@ pipeline {
     }
     stage('Containerize') {
       steps {
-        sh '''cp -rp /mnt/target .
-cp /mnt/liveness.sh .
-/usr/bin/docker build -t  ec2-63-34-137-130.eu-west-1.compute.amazonaws.com:8083/gs-rest-service:21 .'''
+        sh " \
+                 cp -rp /mnt/target . ;\
+                 cp /mnt/liveness.sh . ;\
+                 /usr/bin/docker build -t  ${env.SERVICE_URL}:${env.SERVICE_PORT}/${env.APP_NAME}:${env.BUILD_ID} . \
+           "
       }
     }
     stage('Push Image') {
