@@ -1,0 +1,39 @@
+#---
+#kind: Service
+#apiVersion: v1
+#metadata:
+#  name: demo
+#  labels:
+#    app: demo
+#spec:
+#  ports:
+#  - port: 8091
+#    targetPort: http-server
+#  selector:
+#    app: demo
+#  type: LoadBalancer
+
+---
+kind: ReplicationController
+apiVersion: v1
+metadata:
+  name: demo
+  labels:
+    app: demo
+spec:
+  replicas: 3
+  selector:
+    app: demo
+  template:
+    metadata:
+      labels:
+        app: demo
+    spec:
+      containers:
+      - name: demo
+        image: SERVICE_URL:SERVICE_PORT/APP_NAME:JOB_NUMBER
+        ports:
+        - name: http-server
+          containerPort: 8091
+      imagePullSecrets:
+        - name: regcred
