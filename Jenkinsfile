@@ -50,8 +50,12 @@ cp /mnt/liveness.sh .
       steps {
         sh " \
         PATH=$PATH:/root/bin ; \
-        cat /root/demo-service.yaml.1 | sed \"s/JOB_NUMBER/${env.BUILD_ID}/g\" > /root/demo-service.yaml ; \
-        /root/bin/kubectl apply -f /root/demo-service.yaml \
+        cat demo-service.yaml.template  |\
+        sed \"s/JOB_NUMBER/${env.BUILD_ID}/g\" |\
+        sed \"s/SERVICE_URL:SERVICE_PORT/${env.SERVICE_URL}:${env.SERVICE_PORT}/g\" |\
+        sed \"s/APP_NAME/${env.APP_NAME}/g\" > demo-service.yaml; \
+        /root/bin/kubectl delete -f demo-service.yaml \
+        /root/bin/kubectl apply -f demo-service.yaml \
         "
         echo 'Deploy Complete'
       }
