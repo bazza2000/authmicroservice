@@ -35,5 +35,13 @@ spec:
         ports:
         - name: http-server
           containerPort: CONT_PORT
+        livenessProbe:
+          exec:
+            command:
+              - sh
+              - -c
+              - liveness.sh
+          initialDelaySeconds: 20
+          periodSeconds: 10
       imagePullSecrets:
         - name: regcred
