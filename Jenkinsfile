@@ -49,16 +49,21 @@ cp /mnt/liveness.sh .
       }
       steps {
         sh " \
-        PATH=$PATH:/root/bin ; \
-        cat demo-service.yaml.template  |\
-        sed \"s/JOB_NUMBER/${env.BUILD_ID}/g\" |\
-        sed \"s/SERVICE_URL:SERVICE_PORT/${env.SERVICE_URL}:${env.SERVICE_PORT}/g\" |\
-        sed \"s/APP_NAME/${env.APP_NAME}/g\" > demo-service.yaml; \
-        /root/bin/kubectl delete -f demo-service.yaml \
-        /root/bin/kubectl apply -f demo-service.yaml \
-        "
+                PATH=$PATH:/root/bin ; \
+                cat demo-service.yaml.template  |\
+                sed \"s/JOB_NUMBER/${env.BUILD_ID}/g\" |\
+                sed \"s/SERVICE_URL:SERVICE_PORT/${env.SERVICE_URL}:${env.SERVICE_PORT}/g\" |\
+                sed \"s/APP_NAME/${env.APP_NAME}/g\" > demo-service.yaml; \
+                /root/bin/kubectl delete -f demo-service.yaml \
+                /root/bin/kubectl apply -f demo-service.yaml \
+                "
         echo 'Deploy Complete'
       }
     }
+  }
+  environment {
+    SERVICE_URL = 'ec2-63-34-137-130.eu-west-1.compute.amazonaws.com'
+    SERVICE_PORT = '8083'
+    APP_NAME = 'gs_rest_service'
   }
 }
