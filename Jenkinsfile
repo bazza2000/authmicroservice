@@ -54,7 +54,7 @@ cp /mnt/liveness.sh .
                 sed \"s/JOB_NUMBER/${env.BUILD_ID}/g\" |\
                 sed \"s/SERVICE_URL:SERVICE_PORT/${env.SERVICE_URL}:${env.SERVICE_PORT}/g\" |\
                 sed \"s/APP_NAME/${env.APP_NAME}/g\" > demo-service.yaml; \
-                /root/bin/kubectl delete -f demo-service.yaml \
+                /root/bin/kubectl delete -f demo-service.yaml ;\
                 /root/bin/kubectl apply -f demo-service.yaml \
                 "
         echo 'Deploy Complete'
