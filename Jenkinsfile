@@ -66,6 +66,11 @@ pipeline {
       }
     }
     stage('Test') {
+      agent {
+        node {
+          label 'jenkins_host'
+        }
+      }
       steps {
         sh "./check_deploy"
       }
