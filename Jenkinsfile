@@ -67,9 +67,7 @@ pipeline {
     }
     stage('Test') {
       steps {
-        sh " \
-                                 ./check_deploy
-                           "
+        sh "./check_deploy"
       }
     }
   }
