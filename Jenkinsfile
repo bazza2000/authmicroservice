@@ -65,6 +65,13 @@ pipeline {
         echo 'Deploy Complete'
       }
     }
+    stage('Test') {
+      steps {
+        sh " \
+                                 ./check_deploy
+                           "
+      }
+    }
   }
   environment {
     SERVICE_URL = 'ec2-63-34-137-130.eu-west-1.compute.amazonaws.com'
