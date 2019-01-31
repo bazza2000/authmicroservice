@@ -15,7 +15,7 @@ pipeline {
         archiveArtifacts(artifacts: 'target/*.jar', fingerprint: true)
       }
     }
-    stage('Test') {
+    stage('Unit Test') {
       agent {
         docker {
           image 'maven:3-alpine'
@@ -63,6 +63,16 @@ pipeline {
                                 /root/bin/kubectl apply -f demo-service.yaml \
                                 "
         echo 'Deploy Complete'
+      }
+    }
+    stage('Deploy Test') {
+      agent {
+        node {
+          label 'jenkins_host'
+        }
+      }
+      steps {
+        sh "./check_deploy"
       }
     }
   }

@@ -22,7 +22,7 @@ public class HealthCheck implements HealthIndicator {
     private int check() {
         // Our logic to check health
         long timeNow = new Date().getTime();
-        if(timeNow > (timer + 180000L)){
+        if(timeNow > (timer + 300000L)){
             return -1;
         } else {
             return 0;
