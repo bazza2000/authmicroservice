@@ -15,7 +15,7 @@ pipeline {
         archiveArtifacts(artifacts: 'target/*.jar', fingerprint: true)
       }
     }
-    stage('Test') {
+    stage('Unit Test') {
       agent {
         docker {
           image 'maven:3-alpine'
@@ -65,7 +65,7 @@ pipeline {
         echo 'Deploy Complete'
       }
     }
-    stage('Test') {
+    stage('Deploy Test') {
       agent {
         node {
           label 'jenkins_host'
