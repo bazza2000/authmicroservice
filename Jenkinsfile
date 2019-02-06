@@ -26,6 +26,11 @@ pipeline {
       steps {
         sh 'mvn -DforkCount=0 test'
       }
+      post {
+        always {
+            junit 'build/reports/**/*.xml'
+        }
+      }
     }
     stage('Containerize') {
       steps {
