@@ -25,6 +25,7 @@ pipeline {
       }
       steps {
         sh 'mvn -DforkCount=0 test'
+        ls -alR
       }
       post {
         always {
