@@ -3,16 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <title>Hello World</title>
+    <style>
+        .button {
+            background-color: #4CAF50; /* Green */
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+
+        .button2 {background-color: #008CBA;} /* Blue */
+        .button3 {background-color: #f44336;} /* Red */
+        .button4 {background-color: #e7e7e7; color: black;} /* Gray */
+        .button5 {background-color: #555555;} /* Black */
+    </style>
 </head>
 <body>
+<script>
+    function testChange() {
+        var el = document.getElementById('bobbins').innerHTML=('Please Do Not Press This Button Again!');
+    }
+</script>
+
 <h1>
-    Hello, World! Sean comma Ben comma and Carl
+    Hello, World!
     How are you!
 </h1>
 <p>
     This is a minimal "hello world" HTML document. It demonstrates the
     basic structure of an HTML file and anchors.
 </p>
+<button id="bobbins" class="button button2:" type="button" onclick="testChange()">Press Me!</button>
 <p>
     For more information, visit our site at:
     <a href= "http://www.viosystems.com">http://www.viosystems.com</a>
