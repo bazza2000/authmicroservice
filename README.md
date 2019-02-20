@@ -10,7 +10,9 @@ http://ace5476ba262e11e9b1bd0608c1e0b35-450633413.eu-west-1.elb.amazonaws.com:80
 for automation framework 
 
 node 
+
 dir is wdio-starter-kit
+
 npm test wdio.conf.local.js
 
 
