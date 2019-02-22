@@ -21,7 +21,10 @@ chrome:
     volumes:
       - /dev/shm:/dev/shm
     privileged: true
-#test:
- #   image: ash/test
-  #  links:
-   #   - selenium-hub:hub
+test:
+    image: ash/test
+    links:
+      - selenium-hub
+      - chrome
+    volumes:
+      - /mnt:/app/screenshots

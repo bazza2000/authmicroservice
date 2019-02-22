@@ -10,6 +10,7 @@ function getScreenshotName (folder, context) {
   const browserViewport = context.meta.viewport;
   const browserWidth = browserViewport.width;
   const browserHeight = browserViewport.height;
+  const hostname = selenium-hub;
 
   return path.join(process.cwd(), 'screenshots', folder, `${testParent}_${testName}_${type}_${browserName}_v${browserVersion}_${browserWidth}x${browserHeight}.png`);
 }

@@ -20,13 +20,27 @@ var prodConfig = require('/app/wdio.conf.js').config;
 
 // clone prod config and add new properties/overrides
 var localConfig = Object.assign(prodConfig, {
+  
   baseUrl: 'http://ace5476ba262e11e9b1bd0608c1e0b35-450633413.eu-west-1.elb.amazonaws.com:8091/HelloWorld.html',
 
+    host                    : 'selenium-hub',
+    port                    : 4444,
+    desiredCapabilities     : {
+        seleniumProtocol    : 'WebDriver',
+        platform            : 'ANY',
+        browserName         : 'chrome',
+        acceptSslCerts      : true,
+        cssSelectorsEnabled : true,
+        handlesAlerts       : true,
+
+
+},
   capabilities: [{
     browserName: 'chrome'
   }],
 
-  services: ['visual-regression', 'selenium-standalone'],
+  services: ['visual-regression', 'selenium-standalone' ],
+
 
   visualRegression: {
     compare: new VisualRegressionCompare.LocalCompare({
