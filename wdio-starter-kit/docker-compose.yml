@@ -5,8 +5,8 @@ selenium-hub:
     - GRID_MAX_SESSION=200
     - GRID_NEW_SESSION_WAIT_TIMEOUT=-1
     - GRID_BROWSER_TIMEOUT=120
-  ports:
-    - "4444:4444"
+#  ports:
+#    - "4444:4444"
 
 chrome:
     image: selenium/node-chrome
