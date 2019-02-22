@@ -16,30 +16,23 @@ function getScreenshotName (folder, context) {
 }
 
 // require prod configuration
-var prodConfig = require('/app/wdio.conf.js').config;
+var prodConfig = require('./wdio.conf.js').config;
 
 // clone prod config and add new properties/overrides
 var localConfig = Object.assign(prodConfig, {
-  
   baseUrl: 'http://ace5476ba262e11e9b1bd0608c1e0b35-450633413.eu-west-1.elb.amazonaws.com:8091/HelloWorld.html',
 
-    host                    : 'selenium-hub',
-    port                    : 4444,
-    desiredCapabilities     : {
-        seleniumProtocol    : 'WebDriver',
-        platform            : 'ANY',
-        browserName         : 'chrome',
-        acceptSslCerts      : true,
-        cssSelectorsEnabled : true,
-        handlesAlerts       : true,
+  hostname: '0.0.0.0',
+  port: 4444,
+  
+  
 
-
-},
   capabilities: [{
     browserName: 'chrome'
   }],
 
-  services: ['visual-regression', 'selenium-standalone' ],
+  services: ['visual-regression', 'selenium-standalone'],
+
 
 
   visualRegression: {
@@ -50,29 +43,37 @@ var localConfig = Object.assign(prodConfig, {
     })
   },
 
-  reporters: ['spec'],
+  reporters: ['spec', 'allure'],
+    reporterOptions: {
+      allure: {
+          outputDir: 'allure-results',
+          disableWebdriverStepsReporting: true,
+          disableWebdriverScreenshotsReporting: true,
+          useCucumberStepReporter: false
+      }
+  },
 
   // Hooks to notify Growl-like programs
-  onPrepare: function (config, capabilities) {
-    notifier.notify({
-      title: 'WebdriverIO',
-      message: 'Test run started'
-    });
-  },
-  afterTest: function (test) {
-    if (!test.passed) {
-      notifier.notify({
-        title: 'Test failure!',
-        message: test.parent + ' ' + test.title
-      });
-    }
-  },
-  onComplete: function (exitCode) {
-    notifier.notify({
-      title: 'WebdriverIO',
-      message: 'Tests finished running.'
-    });
-  }
+  // onPrepare: function (config, capabilities) {
+  //   notifier.notify({
+  //     title: 'WebdriverIO',
+  //     message: 'Test run started'
+  //   });
+  // },
+  // afterTest: function (test) {
+  //   if (!test.passed) {
+  //     notifier.notify({
+  //       title: 'Test failure!',
+  //       message: test.parent + ' ' + test.title
+  //     });
+  //   }
+  // },
+  // onComplete: function (exitCode) {
+  //   notifier.notify({
+  //     title: 'WebdriverIO',
+  //     message: 'Tests finished running.'
+  //   });
+  // }
 });
 
 exports.config = localConfig;
