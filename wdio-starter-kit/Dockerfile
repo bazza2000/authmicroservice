@@ -16,9 +16,10 @@ ADD wdio.conf.local.js /app/
 ADD wdio.conf.js /app/
 ADD package.json /app/
 ADD package-lock.json /app/
+COPY .npmrc /root
 COPY test /app/test
 RUN ls -la
-
+RUN  ls -la /root
 # Install app dependencies
 # A wildcard is used to ensure both package.json AND package-lock.json are copied
 # where available (npm@5+)
@@ -26,7 +27,7 @@ RUN ls -la
 # RUN npm ci --only=production
 # Bundle app source
 #COPY . .  
-RUN npm install
+RUN npm --loglevel info install
 ADD test.sh .
 #RUN npm test wdio.conf.local.js
 #CMD [ "npm", "test", "wdio.conf.local.js" ]

@@ -21,8 +21,8 @@ chrome:
     volumes:
       - /dev/shm:/dev/shm
     privileged: true
-test:
-    image: ash/test
+joey-test:
+    image: ec2-63-35-4-237.eu-west-1.compute.amazonaws.com:8083/jeoy-test 
     links:
       - selenium-hub
       - chrome
