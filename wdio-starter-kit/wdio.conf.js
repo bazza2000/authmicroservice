@@ -21,6 +21,9 @@ exports.config = {
   // Set a base URL in order to shorten url command calls. If your url parameter starts
   // with "/", then the base url gets prepended.
   baseUrl: 'http://ace5476ba262e11e9b1bd0608c1e0b35-450633413.eu-west-1.elb.amazonaws.com:8091/HelloWorld.html',
+  
+  hostname: '0.0.0.0',
+  port: 4444,
 
   //
   // =================
