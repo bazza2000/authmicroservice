@@ -21,6 +21,9 @@ var prodConfig = require('./wdio.conf.js').config;
 // clone prod config and add new properties/overrides
 var localConfig = Object.assign(prodConfig, {
   baseUrl: 'http://ace5476ba262e11e9b1bd0608c1e0b35-450633413.eu-west-1.elb.amazonaws.com:8091/HelloWorld.html',
+  
+  user: "josephliamgroark1",
+  key: "8xgynJrAGjgBztHuLARG",
 
   hostname: '0.0.0.0',
   port: 4444,
@@ -31,7 +34,7 @@ var localConfig = Object.assign(prodConfig, {
     browserName: 'chrome'
   }],
 
-  services: ['visual-regression', 'selenium-standalone'],
+  services: ['visual-regression', 'selenium-standalone', 'browserstack'],
 
 
 
