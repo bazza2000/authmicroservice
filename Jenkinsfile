@@ -64,8 +64,8 @@ pipeline {
                                 sed \"s/SERVICE_URL:SERVICE_PORT/${env.SERVICE_URL}:${env.SERVICE_PORT}/g\" |\
                                 sed \"s/CONT_PORT/${env.CONT_PORT}/g\" |\
                                 sed \"s/APP_NAME/${env.APP_NAME}/g\" > demo-service.yaml; \
-                                /root/bin/kubectl delete -f demo-service.yaml ;\
-                                /root/bin/kubectl apply -f demo-service.yaml \
+                                echo /root/bin/kubectl delete -f demo-service.yaml ;\
+                                echo /root/bin/kubectl apply -f demo-service.yaml \
                                 "
         echo 'Deploy Complete'
       }
@@ -77,7 +77,7 @@ pipeline {
         }
       }
       steps {
-        sh "./check_deploy"
+        sh "echo ./check_deploy"
       }
     }
   }
