@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hello World</title>
+    <style>
+        .button {
+            background-color: #4CAF50; /* Green */
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+
+        .button2 {background-color: #008CBA;} /* Blue */
+        .button3 {background-color: #f44336;} /* Red */
+        .button4 {background-color: #e7e7e7; color: black;} /* Gray */
+        .button5 {background-color: #555555;} /* Black */
+    </style>
+</head>
+<body>
+<script>
+    var pressed = false;
+    function testChange() {
+        if (!pressed) {
+            var el = document.getElementById('bobbins').innerHTML = ('Please Do Not Press This Button Again!');
+            pressed = true;
+        } else {
+            var el2 = document.getElementById('bobbins').innerHTML = ('Kindly Do Not Press This Button');
+        pressed = false;
+        }
+    }
+</script>
+
+<h1>
+    Hello, World!! Demo!!!
+</h1>
+<p>
+    This is a minimal "hello world" static HTML document. It demonstrates the
+    basic structure of an HTML file and anchors.
+</p>
+<button id="bobbins" class="button button2:" type="button" onclick="testChange()">Press Me!</button>
+   
+<p>
+    For more information, visit our site at:
+    <a href= "http://www.viosystems.com">http://www.viosystems.com</a>
+</p>
+<hr>
+<address>
+    &copy; <a href="http://www.viosystems.com/#contact">Contact</a> (<a
+        href="mailto:dermot@viosystems.com?subject=UserId [123456789]&body=I acknowledge that My SME banking migration will take place">dermot@viosystems.com</a>) / 2019-01-30
+</address>
+</body>
+</html>
