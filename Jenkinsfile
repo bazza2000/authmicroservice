@@ -17,9 +17,9 @@ pipeline {
     }
     stage('Containerize') {
       steps {
+        copyArtifacts filter: 'target/*.jar', fingerprintArtifacts: true, projectName: '${JOB_NAME}', selector: specific('${BUILD_NUMBER}')
         sh " \
-                                 pwd; ls -al /tmp/ ;\
-                                 cp -rp /tmp/target . ;\
+                                 pwd; ls -al ;\
                                  /usr/bin/docker build -t  ${env.SERVICE_URL}:${env.SERVICE_PORT}/${env.APP_NAME}:${env.BUILD_ID} . \
                            "
       }
