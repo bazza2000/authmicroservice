@@ -11,7 +11,7 @@ pipeline {
       }
       steps {
         sh 'mvn -B -DskipTests clean package'
-        //sh 'cp -rp target /artifacts'
+        sh 'cp -rp target /artifacts'
         archiveArtifacts(artifacts: 'target/*.jar', fingerprint: true)
       }
     }
