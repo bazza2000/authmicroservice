@@ -18,6 +18,7 @@ pipeline {
     stage('Containerize') {
       steps {
         sh " \
+                                 pwd; ls -al /tmp/ ;\
                                  cp -rp /tmp/target . ;\
                                  /usr/bin/docker build -t  ${env.SERVICE_URL}:${env.SERVICE_PORT}/${env.APP_NAME}:${env.BUILD_ID} . \
                            "
