@@ -17,6 +17,7 @@ pipeline {
     }
     stage('Containerize') {
       steps {
+        copyArtifacts filter: 'target/*.jar', fingerprintArtifacts: true, projectName: '${JOB_NAME}', selector: specific('${BUILD_NUMBER}')
         sh " \
                                  cp -rp /mnt/target . ;\
                                  cp /mnt/liveness.sh . ;\
