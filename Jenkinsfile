@@ -5,7 +5,7 @@ pipeline {
       agent {
         docker {
           image 'maven:3-alpine'
-          args '-u root:sudo -v /root/.m2:/root/.m2 -v /mnt:/artifacts'
+          args '-v /root/.m2:/root/.m2 -v /tmp:/artifacts'
         }
 
       }
