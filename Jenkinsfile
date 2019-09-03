@@ -5,7 +5,7 @@ pipeline {
       agent {
         docker {
           image 'maven:3-alpine'
-          args '-v /root/.m2:/root/.m2 -v /tmp:/artifacts'
+          args '-v /root/.m2:/root/.m2 -v /mnt:/artifacts'
         }
 
       }
@@ -20,7 +20,6 @@ pipeline {
         copyArtifacts filter: 'target/*.jar', fingerprintArtifacts: true, projectName: '${JOB_NAME}', selector: specific('${BUILD_NUMBER}')
         sh " \
                                  cp -rp /mnt/target . ;\
-                                 cp /mnt/liveness.sh . ;\
                                  /usr/bin/docker build -t  ${env.SERVICE_URL}:${env.SERVICE_PORT}/${env.APP_NAME}:${env.BUILD_ID} . \
                            "
       }
