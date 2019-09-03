@@ -16,4 +16,10 @@ pipeline {
       }
     }
   }
+  environment {
+    SERVICE_URL = 'ec2-63-35-4-237.eu-west-1.compute.amazonaws.com'
+    SERVICE_PORT = '8083'
+    APP_NAME = 'gs-rest-service'
+    CONT_PORT = '8080'
+  }
 }
