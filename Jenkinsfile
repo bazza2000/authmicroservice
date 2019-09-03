@@ -17,7 +17,7 @@ pipeline {
     }
     stage('Containerize') {
       steps {
-        sh '/usr/bin/docker build -t  ${env.SERVICE_URL}:${env.SERVICE_PORT}/${env.APP_NAME}:${env.BUILD_ID} . '
+        sh "/usr/bin/docker build -t  ${env.SERVICE_URL}:${env.SERVICE_PORT}/${env.APP_NAME}:${env.BUILD_ID} . "
       }
     }
   }
