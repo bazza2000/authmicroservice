@@ -16,6 +16,12 @@ pipeline {
       }
     }
     stage('Containerize') {
+      agent {
+        docker {
+          image 'maven:3-alpine'
+          args '-v /root/.m2:/root/.m2 -v /tmp:/artifacts'
+        }
+      }
       steps {
         sh " \
                                  /usr/bin/docker build -t  ${env.SERVICE_URL}:${env.SERVICE_PORT}/${env.APP_NAME}:${env.BUILD_ID} . \
