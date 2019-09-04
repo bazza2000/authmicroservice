@@ -43,6 +43,11 @@ pipeline {
         sh "/usr/bin/docker build -t  ${env.SERVICE_URL}:${env.SERVICE_PORT}/${env.APP_NAME}:${env.BUILD_ID} . "
       }
     }
+    stage('Update Running Image') {
+      steps {
+        sh "docker-compose -f /root/repos/authmicroservice/docker-compose.yml config" 
+      }
+    }
   }
   environment {
     SERVICE_URL = 'ec2-34-241-55-249.eu-west-1.compute.amazonaws.com'
