@@ -45,7 +45,7 @@ pipeline {
     }
     stage('Update Running Image') {
       steps {
-        sh "docker-compose -f /root/repos/authmicroservice/docker-compose.yml config" 
+        sh "/usr/local/bin/docker-compose -f /root/repos/authmicroservice/docker-compose.yml config" 
       }
     }
   }
