@@ -14,7 +14,7 @@ public class GreetingController {
     private final AtomicLong counter = new AtomicLong();
     private Greeting result= new Greeting(counter.incrementAndGet(), "Properties");
 
-    @RequestMapping("/properties", method="POST")
+    @RequestMapping("/properties")
     public Greeting greeting(@RequestParam(value="name", defaultValue="World") String name) {
         Properties props = System.getProperties();
         System.out.println("Properties length = " + props.entrySet().size());
@@ -25,7 +25,7 @@ public class GreetingController {
         return result;
     }
 
-    @RequestMapping("/dodgySwitch", method="POST")
+    @RequestMapping("/dodgySwitch")
     public Greeting dodgySwitch(@RequestParam(value="type", defaultValue="1") int type){
         switch(type){
             case 1: result= new Greeting(counter.incrementAndGet(), "Bonjour");
