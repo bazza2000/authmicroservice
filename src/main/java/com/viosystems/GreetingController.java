@@ -33,5 +33,6 @@ public class GreetingController {
             case 2:  result= new Greeting(counter.incrementAndGet(), "Eh Oh");
                     break;
         }
+        return result;
     }
 }
