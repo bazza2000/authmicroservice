@@ -24,4 +24,14 @@ public class GreetingController {
         }
         return result;
     }
+
+    @RequestMapping("/dodgySwitch")
+    public Greeting dodgySwitch(@RequestParam(value="type", defaultValue="1") int type){
+        switch(type){
+            case 1: result= new Greeting(counter.incrementAndGet(), "Bonjour");
+                    break;
+            case 2:  result= new Greeting(counter.incrementAndGet(), "Eh Oh");
+                    break;
+        }
+    }
 }
