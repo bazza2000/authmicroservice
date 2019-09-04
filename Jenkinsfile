@@ -21,7 +21,7 @@ pipeline {
     stage('Build') {
       agent {
         docker {
-          image 'maven:3-alpine'
+          image 'maven:3.3-jdk-8'
           args '-v /root/.m2:/root/.m2 -v /root/artifacts:/artifacts --network sonar-qube_default'
         }
 
