@@ -25,7 +25,7 @@ public class GreetingController {
         return result;
     }
 
-    @RequestMapping("/dodgySwitch", method="POST")
+    @RequestMapping("/dodgySwitch")
     public Greeting dodgySwitch(@RequestParam(value="type", defaultValue="1") int type){
         switch(type){
             case 1: result= new Greeting(counter.incrementAndGet(), "Bonjour");
