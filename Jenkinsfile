@@ -22,12 +22,12 @@ pipeline {
       agent {
         docker {
           image 'maven:3-alpine'
-          args '-v /root/.m2:/root/.m2 -v /root/artifacts:/artifacts'
+          args '-v /root/.m2:/root/.m2 -v /root/artifacts:/artifacts --network sonar-qube_default'
         }
 
       }
       steps {
-        sh 'mvn -B -DskipTests clean package'
+        sh 'mvn -B clean package sonar:sonar -Dsonar.host.url=http://sonarqube:9000'
         sh 'cp -rp target /artifacts'
         archiveArtifacts(artifacts: 'target/*.jar', fingerprint: true)
       }
