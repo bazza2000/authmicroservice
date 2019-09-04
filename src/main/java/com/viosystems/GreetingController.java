@@ -14,7 +14,7 @@ public class GreetingController {
     private final AtomicLong counter = new AtomicLong();
     private Greeting result= new Greeting(counter.incrementAndGet(), "Properties");
 
-    @RequestMapping("/properties")
+    @RequestMapping("/properties", method="POST")
     public Greeting greeting(@RequestParam(value="name", defaultValue="World") String name) {
         Properties props = System.getProperties();
         System.out.println("Properties length = " + props.entrySet().size());
