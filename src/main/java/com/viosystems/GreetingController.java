@@ -7,14 +7,14 @@ import java.util.concurrent.atomic.AtomicLong;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
+import org.springframework.web.bind.annotation.RequestMethod;
 @RestController
 public class GreetingController {
 
     private final AtomicLong counter = new AtomicLong();
     private Greeting result= new Greeting(counter.incrementAndGet(), "Properties");
 
-    @RequestMapping("/properties")
+    @RequestMapping(value="/properties", method = RequestMethod.POST)
     public Greeting greeting(@RequestParam(value="name", defaultValue="World") String name) {
         Properties props = System.getProperties();
         System.out.println("Properties length = " + props.entrySet().size());
@@ -25,7 +25,7 @@ public class GreetingController {
         return result;
     }
 
-    @RequestMapping("/dodgySwitch", method="POST")
+    @RequestMapping(value="/dodgySwitch", method = RequestMethod.POST)
     public Greeting dodgySwitch(@RequestParam(value="type", defaultValue="1") int type){
         switch(type){
             case 1: result= new Greeting(counter.incrementAndGet(), "Bonjour");
