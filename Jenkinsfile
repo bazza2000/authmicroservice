@@ -48,6 +48,11 @@ pipeline {
         build job:'auth'
       }
     }
+    stage('User Testing') {
+      steps {
+        build job:'auth_test'
+      }
+    }
   }
   environment {
     SERVICE_URL = 'ec2-34-241-55-249.eu-west-1.compute.amazonaws.com'
